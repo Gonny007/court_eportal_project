@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Hearing Management</title>
+    <title>SUNO</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,9 +36,11 @@
             text-decoration: none;
             padding: 1em;
             display: block;
+            transition: background-color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
             background-color: #555;
+            transform: scale(1.05);
         }
         main {
             padding: 2em;
@@ -73,14 +76,15 @@
 </head>
 <body>
     <header>
-        <h1>Case Hearing Management System</h1>
+        <h1>SUNO</h1>
+        <h3>Case Hearing Management</h3>
     </header>
     <nav>
         <ul>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
     </nav>
     <main>
