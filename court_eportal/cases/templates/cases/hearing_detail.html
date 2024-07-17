@@ -19,39 +19,40 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="{% url 'case_list' %}">Case List</a> -->
+                        <a class="nav-link" href="{% url 'case_list' %}">Case List</a>
                     </li>
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="{% url 'hearing_index' %}">Hearings</a> -->
+                        <a class="nav-link" href="{% url 'hearing_index' %}">Hearings</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-5"><br><br>
-        <a href="{% url 'case_list' %}" class="btn btn-primary btn-sm mb-3">Back to Case List</a>
-        <h2>Hearings List for Case {{ case.case_number }}</h2>
-        <a href="{% url 'hearing_create' case.case_number %}" class="btn btn-success mb-3">Add Hearing</a>
+    <div class="container mt-5">
+        <h2>Hearings List</h2>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Hearing Date</th>
-                        <th>Hearing Time</th>
                         <th>Description</th>
-                        <!-- <th>Actions</th> -->
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for hearing in hearings %}
                         <tr>
                             <td>{{ hearing.date }}</td>
-                            <td>{{ hearing.time }}</td>
                             <td>{{ hearing.description }}</td>
                             <td>
-                                <!-- <a href="{% url 'hearing_detail' hearing.pk %}" class="btn btn-secondary btn-sm">View</a>
-                                <a href="{% url 'hearing_update' hearing.pk %}" class="btn btn-secondary btn-sm">Edit</a> -->
+                                <a href="{% url 'hearing_detail' hearing.pk %}" class="btn btn-secondary btn-sm">View</a>
+                                <a href="{% url 'hearing_update' hearing.pk %}" class="btn btn-secondary btn-sm">Edit</a>
+                                <!-- Add delete functionality here if needed -->
                             </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3">No hearings found.</td>
                         </tr>
                     {% endfor %}
                 </tbody>
