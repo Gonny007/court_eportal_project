@@ -6,7 +6,9 @@
 {% block content %}
 <main>
     <h2>Case List</h2>
+    {% if not read_only %}
     <a href="{% url 'case_create' %}" class="btn btn-primary btn-sm">Add New Case</a><br><br>
+    {% endif %}
     
     <div class="table-responsive">
         <table class="table">
@@ -16,6 +18,8 @@
                     <th>Title</th>
                     <th>Date Filed</th>
                     <th>Status</th>
+                    <th>Plaintiff</th>
+                    <th>Defendant</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,8 +30,12 @@
                         <td>{{ case.title }}</td>
                         <td>{{ case.date_filed }}</td>
                         <td>{{ case.status }}</td>
+                        <td>{{ case.plaintiff }}</td>
+                        <td>{{ case.defendant }}</td>
                         <td>
+                            {% if not read_only %}
                             <a href="{% url 'case_update' case.pk %}" class="btn btn-secondary btn-sm">Edit</a>
+                            {% endif %}
                             <a href="{% url 'hearing_list' case_number=case.case_number %}" class="btn btn-secondary btn-sm">View Hearings</a>
                         </td>
                     </tr>
@@ -55,8 +63,9 @@
 
     .table th, .table td {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 4px; /* Adjusted padding for smaller cells */
         text-align: left;
+        font-size: 12px; /* Adjusted font size for smaller text */
     }
 
     .table th {
